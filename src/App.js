@@ -1,5 +1,14 @@
+import React from "react";
+import Header from "./components/Header.js";
+import Cards from "./components/Cards.js";
+
 function App() {
-   return <div className="App">hello</div>;
+   return (
+      <main>
+         <Header />
+         <Cards />
+      </main>
+   );
 }
 
 export default App;
