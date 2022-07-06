@@ -55,6 +55,12 @@ function App() {
       });
    };
 
+   const resetClickedRobots = () => {
+      setRobots((prevState) =>
+         prevState.map((item) => ({ ...item, clicked: false }))
+      );
+   };
+
    const changeRandomNumber = () => {
       setRobots((prevState) =>
          prevState.map((item) => ({
@@ -64,10 +70,30 @@ function App() {
       );
    };
 
+   const [score, setScore] = React.useState(0);
+
+   const increaseScore = () => {
+      setScore(score + 1);
+   };
+
+   const [highScore, setHighScore] = React.useState(0);
+
+   const defineHighScore = () => {
+      setHighScore(score);
+      setScore(0);
+   };
+
    return (
       <main>
-         <Header />
-         <Cards robots={robots} />
+         <Header score={score} highScore={highScore} />
+         <Cards
+            robots={robots}
+            clickRobot={clickRobot}
+            resetClickedRobots={resetClickedRobots}
+            changeRandomNumber={changeRandomNumber}
+            increaseScore={increaseScore}
+            defineHighScore={defineHighScore}
+         />
       </main>
    );
 }

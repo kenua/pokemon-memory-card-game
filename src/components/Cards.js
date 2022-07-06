@@ -10,7 +10,13 @@ function Cards(props) {
          };
 
          return (
-            <div className="cards__card" style={style} key={robot.id}>
+            <div
+               className="cards__card"
+               style={style}
+               key={robot.id}
+               data-id={robot.id}
+               data-clicked={robot.clicked}
+            >
                <div className="card__title-container card__title-container--reverse">
                   <p>{robot.name}</p>
                </div>
@@ -21,7 +27,34 @@ function Cards(props) {
          );
       });
 
-   return <section className="cards">{cardList}</section>;
+   const checkImage = (e) => {
+      const {
+         clickRobot,
+         resetClickedRobots,
+         changeRandomNumber,
+         increaseScore,
+         defineHighScore,
+      } = props;
+      let target = e.target;
+
+      if (target.dataset.id) {
+         if (target.dataset.clicked === "false") {
+            clickRobot(target.dataset.id);
+            increaseScore();
+            changeRandomNumber();
+         } else if (target.dataset.clicked === "true") {
+            resetClickedRobots();
+            defineHighScore();
+            changeRandomNumber();
+         }
+      }
+   };
+
+   return (
+      <section className="cards" onClick={checkImage}>
+         {cardList}
+      </section>
+   );
 }
 
 export default Cards;
