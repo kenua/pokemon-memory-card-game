@@ -1,1 +1,1 @@
-# Megaman Card Memory Game
+# Megaman Memory Card Game
