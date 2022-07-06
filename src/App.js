@@ -47,12 +47,11 @@ function App() {
    const [robots, setRobots] = React.useState(robotsData);
 
    const clickRobot = (id) => {
-      setRobots((prevState) => {
-         let newState = prevState.map((item) =>
-            item.id === id ? { ...item, clicked: !item.clicked } : item
-         );
-         return newState;
-      });
+      setRobots((prevState) =>
+         prevState.map((item) =>
+            item.id === id ? { ...item, clicked: true } : item
+         )
+      );
    };
 
    const resetClickedRobots = () => {

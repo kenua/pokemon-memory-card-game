@@ -1,5 +1,6 @@
 import React from "react";
 function Cards(props) {
+   // sort images and generate a JSX list
    const cardList = [...props.robots]
       .sort((a, b) => {
          return a.randomNumber - b.randomNumber;
@@ -35,14 +36,17 @@ function Cards(props) {
          increaseScore,
          defineHighScore,
       } = props;
-      let target = e.target;
+      let { id, clicked } = e.target.dataset;
 
-      if (target.dataset.id) {
-         if (target.dataset.clicked === "false") {
-            clickRobot(target.dataset.id);
+      if (id) {
+         // increase score
+         if (clicked === "false") {
+            clickRobot(id);
             increaseScore();
             changeRandomNumber();
-         } else if (target.dataset.clicked === "true") {
+
+            // reset score and set highScore
+         } else if (clicked === "true") {
             resetClickedRobots();
             defineHighScore();
             changeRandomNumber();
