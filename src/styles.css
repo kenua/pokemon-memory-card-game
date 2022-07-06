@@ -11,26 +11,31 @@ body {
    text-align: center;
 }
 .header__logo {
-   width: 30rem;
+   width: 50%;
+   min-width: 28rem;
+   max-width: 70rem;
 }
 .header__title {
-   font-size: 3rem;
+   font-size: 3.5rem;
    margin-top: -1.5rem;
 }
 .header__score {
-   font-size: 2rem;
+   font-size: 2.5rem;
    margin-top: 1.5rem;
 }
 .cards {
    padding: 3rem;
    display: grid;
+   max-width: 1000px;
+   margin: 0 auto;
    gap: 5rem;
-   grid-template-columns: repeat(3, 1fr);
-   grid-auto-rows: 35rem;
+   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+   grid-auto-rows: 32rem;
 }
 .cards__card {
+   background-color: white;
    background-position: center;
-   background-size: cover;
+   background-size: 90%;
    background-repeat: no-repeat;;
    padding: 1rem;
    border-width: 2rem;
@@ -78,7 +83,6 @@ body {
    top: 0;
 }
 .card__title-container--reverse p {
-   transform: rotate(180deg);
    animation-name:            moveText;
    animation-duration:       3000ms;
    animation-timing-function:  linear;
