@@ -5,18 +5,18 @@ import Header from "./components/Header.js";
 import Cards from "./components/Cards.js";
 
 // import images
-import robotImage1 from "./images/BombMan.png";
-import robotImage2 from "./images/BubbleMan.png";
-import robotImage3 from "./images/ClashMan.png";
-import robotImage4 from "./images/CutMan.png";
-import robotImage5 from "./images/ElecMan.png";
-import robotImage6 from "./images/FireMan.png";
-import robotImage7 from "./images/HeatMan.png";
-import robotImage8 from "./images/IceMan.png";
-import robotImage9 from "./images/MetalMan.png";
-import robotImage10 from "./images/QuickMan.png";
-import robotImage11 from "./images/SparkMan.png";
-import robotImage12 from "./images/TopMan.png";
+import robotImage1 from "./images/BombMan.jpg";
+import robotImage2 from "./images/BubbleMan.jpg";
+import robotImage3 from "./images/ClashMan.jpg";
+import robotImage4 from "./images/CutMan.jpg";
+import robotImage5 from "./images/ElecMan.jpg";
+import robotImage6 from "./images/FireMan.jpg";
+import robotImage7 from "./images/HeatMan.jpg";
+import robotImage8 from "./images/IceMan.jpg";
+import robotImage9 from "./images/MetalMan.jpg";
+import robotImage10 from "./images/QuickMan.jpg";
+import robotImage11 from "./images/SparkMan.jpg";
+import robotImage12 from "./images/TopMan.jpg";
 
 let robotsData = [
    robotImage1,

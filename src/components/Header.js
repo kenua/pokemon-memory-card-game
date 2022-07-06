@@ -9,6 +9,10 @@ function Header(props) {
          <p className="header__score text-shadow">
             Score: {props.score} High Score: {props.highScore}
          </p>
+         <p className="header__desc text-shadow">
+            Get points by clicking an image, <br /> you'll lose them if you
+            click the same image again
+         </p>
       </header>
    );
 }
