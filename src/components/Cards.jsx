@@ -3,7 +3,16 @@ function Cards(props) {
         e.preventDefault()
 
         let target = e.target;
-        if (target.nodeName === 'IMG') target = target.parentElement
+
+        if (target.nodeName !== 'A') {
+            let anchorNode = target.closest('a')
+
+            if (anchorNode) {
+                target = anchorNode
+            } else {
+                return
+            }
+        }
 
         let pokemonName = target.dataset.name
         let pokemonClicked = props.pokemon.filter(pokemon => (pokemon.name === pokemonName))[0]
@@ -24,6 +33,8 @@ function Cards(props) {
             props.setPokemon([...newPokemonArray])
             props.increaseScore()
         }
+
+        document.activeElement.blur()
     }
 
     // Order pokemon randomly in ascending order
@@ -43,7 +54,6 @@ function Cards(props) {
             href='#' 
             key={item.name} 
             tabIndex='0' 
-            onClick={handleClick}
             data-name={item.name}
         >
             <div className='card__line'>
@@ -54,7 +64,7 @@ function Cards(props) {
     ))
 
     return (
-        <div className='cards-container'>{pokemonList}</div>
+        <div className='cards-container' onClick={handleClick}>{pokemonList}</div>
     )
 }
 
