@@ -1,0 +1,61 @@
+@use './mixins' as *;
+
+body {
+    background-image: url('../assets/dots-pattern.svg');
+    background-position: center bottom;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.wrapper {
+    margin: 0 auto;
+    padding: 16px;
+
+    @include breakpoint(1148px) {
+        max-width: 1148px;
+        display: grid;
+        min-height: 498px;
+        grid-template-columns: 298px 1fr;
+        margin-top: 50px;
+    }
+}
+.anchor {
+    color: #74C0FC;
+}
+.f-bold {
+    font-weight: bold;
+}
+.mb {
+    margin-bottom: 32px;
+}
+.button {
+    background: rgba(45, 119, 255, 0.15);
+    color: #2D77FF;
+    display: inline-flex;
+    align-items: center;
+    padding: 12px;
+    border-radius: 16px;
+    width: 100%;
+
+
+    &__icon {
+        margin-right: 6px;
+    }
+    &__score {
+        color: #202020;
+        margin-left: auto;
+    }
+}
+.button--orange {
+    background: rgba(255, 214, 0, 0.15);
+    color: rgba(255, 214, 0, 1);
+}
+.button--info {
+    text-indent: -9999px;
+    align-items: center;
+}
+.button--danger {
+    text-indent: -9999px;
+    background-color: rgba(255, 101, 113, 0.85);
+    justify-content: center;
+}

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
+import Score from './components/Score'
 import Cards from './components/Cards'
-import logoUrl from './assets/Logo.png'
 
 // Replace these pokemon with other ones
 let pokemonNames = [
@@ -9,18 +9,6 @@ let pokemonNames = [
 	'Rattata', 'Ekans', 'Nidorina',
 	'Vulpix', 'Oddish', 'Venomoth',
 ]
-
-function Header() {
-	return (
-		<header className='header'>
-			<img src={logoUrl} alt="Pokémon Memory Game" className='header__logo' width='266' height='143' />
-			<p className='header__p'>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-				Qui, ducimus laborum non est expedita tempora.
-			</p>
-		</header>
-	)
-}
 
 function App() {
 	let [score, setScore] = useState(0)
@@ -65,22 +53,10 @@ function App() {
 	}, [])
 
 	return (
-		<>
-			<Header />
-			<div className='score-container'>
-				<div className='card card--button'>
-					<div className="card__line">
-						<h2>Score: {score}</h2>
-					</div>
-				</div>
-				<div className='card card--button'>
-					<div className="card__line">
-					Hish Score: {highScore}
-					</div>
-				</div>
-			</div>
+		<div className='wrapper'>
+			<Score score={score} highScore={highScore} />
 			<Cards pokemon={pokemon} setPokemon={setPokemon} increaseScore={increaseScore} resetScore={resetScore}/>
-		</>
+		</div>
 	)
 }
 

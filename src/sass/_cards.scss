@@ -1,0 +1,59 @@
+@use './mixins' as *;
+.cards {
+    margin: 32px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 150px));
+    gap: 24px;
+    justify-content: center;
+
+    &__card {
+        font-weight: bold;
+        background-color: #1E1E1E;
+        color: #fff;
+        padding: 8px;
+        border-radius: 16px;
+        box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.20);
+        position: relative;
+        z-index: 1;
+
+        &:nth-child(3n+1) {
+            background-color: #2D77FF;
+            background-image: linear-gradient(180deg, #2D77FF 0%, #033693 100%);
+        }
+        &:nth-child(3n+2) {
+            background-color: #71E272;
+            background-image: linear-gradient(180deg, #71E272 0%, #1A6C00 100%);
+        }
+        &:nth-child(3n+3) {
+            background-color: #FF6464;
+            background-image: linear-gradient(180deg, #FF6464 0%, #9A020E 100%);
+        }    
+    }
+    &__card-line {
+        height: 100%;
+        padding: 8px;
+        border: 1px solid rgba(255,255,255,.5);
+        border-radius: 16px;
+    }
+    &__pokemon-name {
+        border-radius: 16px;
+        background: rgba(0, 0, 0, 0.33);
+        font-weight: bold;
+        font-size: 12px;
+        text-transform: uppercase;
+        line-height: 1;
+        padding: 2px 8px;
+        position: absolute;
+        top: 16px;
+        left: 16px;
+    }
+
+    // restrain grid to 4 columns
+    @include breakpoint(744px) {
+        grid-template-columns: repeat(4, 150px);
+    }
+    @include breakpoint(1148px) {
+        margin: 0;
+        justify-content: end;
+    }
+}

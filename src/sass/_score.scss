@@ -1,0 +1,89 @@
+@use './mixins' as *;
+
+.modal {
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+    position: fixed;
+    top: 0px;
+    left: 0;
+
+    &__content {
+        padding: 16px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.20);
+        margin-bottom: 16px;
+    }
+    z-index: 10;
+
+    @include breakpoint(744px) {
+        display: none;
+    }
+}
+.score {
+    display: grid;
+
+    @include breakpoint(744px) {
+        grid-template-columns: 1fr 3px 1fr;
+        grid-auto-rows: auto;
+        column-gap: 16px;
+
+        &__line {
+            border-radius: 16px;
+            background: rgba(0, 0, 0, 0.10);
+        }
+    }
+
+    @include breakpoint(1148px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 3px auto;
+        row-gap: 42px;
+    }
+}
+.scores-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 41px;
+    gap: 17px;
+
+    &__score {
+        grid-column: 1;
+        grid-row: 1;
+    }
+    &__high-score {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    .button--info {
+        grid-column: 2;
+        grid-row: 1 / 3;
+    }
+
+    @include breakpoint(744px) {
+        grid-template-columns: 1fr;
+        align-content: center;
+
+        .button--info {
+            display: none;
+        }
+    }
+
+    @include breakpoint(1148px) {
+        align-content: end;
+
+        .button {
+            max-width: 211px;
+        }
+    }
+}
+.score-description {
+    display: none;
+
+    &__para {
+        max-width: 298px;
+    }
+
+    @include breakpoint(744px) {
+        display: block;
+    }
+}

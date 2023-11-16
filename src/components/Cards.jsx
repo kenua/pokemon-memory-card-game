@@ -50,21 +50,21 @@ function Cards(props) {
     pokemonList.sort((a, b) => a.order - b.order)
     pokemonList = pokemonList.map(item => (
         <a 
-            className='card card--pokemon'
+            className='cards__card'
             href='#' 
             key={item.name} 
             tabIndex='0' 
             data-name={item.name}
         >
-            <div className='card__line'>
-                <h2 className='card__pokemon-name'>{item.name}</h2>
-                <img src={item.url} className='card__pokemon' width='192' height='192'/>
+            <div className='cards__card-line'>
+                <h2 className='cards__pokemon-name'>{item.name}</h2>
+                <img src={item.url} className='cards__pokemon-image' width='192' height='192'/>
             </div>
         </a>
     ))
 
     return (
-        <div className='cards-container' onClick={handleClick}>{pokemonList}</div>
+        <div className='cards' onClick={handleClick}>{pokemonList}</div>
     )
 }
 
