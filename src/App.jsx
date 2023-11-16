@@ -2,12 +2,11 @@ import { useState, useEffect } from 'react'
 import Score from './components/Score'
 import Cards from './components/Cards'
 
-// Replace these pokemon with other ones
 let pokemonNames = [
-	'Bulbasaur', 'Charmander', 'Squirtle',
-	'Caterpie', 'Weedle', 'Pidgey',
-	'Rattata', 'Ekans', 'Nidorina',
-	'Vulpix', 'Oddish', 'Venomoth',
+	'Mankey', 'Geodude', 'Doduo',
+	'Metapod', 'Oddish', 'Diglett',
+	'Abra', 'Poliwag', 'Dratini',
+	'Vulpix', 'Charmander', 'Meowth',
 ]
 
 function App() {
@@ -36,7 +35,7 @@ function App() {
 					let pokemonData = await pokemonJson.json()
 					let pokemonItem = {
 						name: pokemonData.name,
-						url: pokemonData.sprites.front_default,
+						url: pokemonData.sprites.other.home.front_default,
 						clicked: false,
 					}
 					pokemons.push(pokemonItem)

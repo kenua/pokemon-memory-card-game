@@ -2,7 +2,8 @@
 .cards {
     margin: 32px 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 150px));
+    grid-template-columns: repeat(auto-fit, minmax(170px, 170px));
+    grid-template-rows: 170px;
     gap: 24px;
     justify-content: center;
 
@@ -49,8 +50,8 @@
     }
 
     // restrain grid to 4 columns
-    @include breakpoint(744px) {
-        grid-template-columns: repeat(4, 150px);
+    @include breakpoint(768px) {
+        grid-template-columns: repeat(4, 170px);
     }
     @include breakpoint(1148px) {
         margin: 0;

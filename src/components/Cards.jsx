@@ -58,7 +58,7 @@ function Cards(props) {
         >
             <div className='cards__card-line'>
                 <h2 className='cards__pokemon-name'>{item.name}</h2>
-                <img src={item.url} className='cards__pokemon-image' width='192' height='192'/>
+                <img src={item.url} className='cards__pokemon-image' width='170' height='170' alt={item.name}/>
             </div>
         </a>
     ))
