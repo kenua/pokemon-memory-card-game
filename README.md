@@ -1,8 +1,6 @@
-# React + Vite
+# Pokémon Memory Card Game 🧠🐸
+A Pokémon memory card game made with React.js. You gain points by clicking a pokemon, and lose all your points by clicking the same twice.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🌐 [Live Preview](https://kenua.github.io/pokemon-memory-card-game/)
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[![screenshot](./screenshot.png)](https://kenua.github.io/pokemon-memory-card-game/)
