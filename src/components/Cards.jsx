@@ -1,4 +1,16 @@
+import loadingIcon from '../assets/Spinner.svg'
+
 function Cards(props) {
+    if (props.loading) {
+        return (
+            <div className='cards'>
+                <div className='cards__loading-item'>
+                    <img src={loadingIcon} alt='' />
+                </div>
+            </div>
+        )
+    }
+
     let handleClick = (e) => {
         e.preventDefault()
 

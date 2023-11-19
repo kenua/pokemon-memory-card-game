@@ -9,10 +9,26 @@ let pokemonNames = [
 	'Vulpix', 'Charmander', 'Meowth',
 ]
 
+function ErrorMessage() {
+	return (
+		<div className='error-message'>
+			<p className='error-message__title'>
+				❌
+				<br/> 
+				Something went wrong
+				</p> 
+			<p className='error-message__desc'>Please reload page or try again later.</p>
+		</div> 
+	)
+}
+
 function App() {
 	let [score, setScore] = useState(0)
 	let [highScore, setHighScore] = useState(0)
 	let [pokemon, setPokemon] = useState([])
+
+	let [loading, setLoading] = useState(true)
+	let [error, setError] = useState(null)
 
 	let increaseScore = () => {
 		setScore(score + 1)
@@ -24,37 +40,51 @@ function App() {
 	}
 
 	useEffect(() => {
-		// fetch pokemon data and populate `pokemon` state
-		(async function() {
+		async function getPokemon() {
 			try {
-				let pokemons = []
+				let fetchPromises = pokemonNames.map(
+					pokemon => fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.toLowerCase()}`, { mode: 'cors'})
+				)
+				let responseArr = await Promise.all(fetchPromises)
 	
-				for (let i = 0; i < pokemonNames.length; i++) {
-					let apiUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonNames[i].toLowerCase()}`
-					let pokemonJson = await fetch(apiUrl)
-					let pokemonData = await pokemonJson.json()
-					let pokemonItem = {
-						name: pokemonData.name,
-						url: pokemonData.sprites.other.home.front_default,
-						clicked: false,
+				for (let responseObj of responseArr) {
+					if (responseObj.status >= 400) {
+						throw new Error('Server Error')
 					}
-					pokemons.push(pokemonItem)
 				}
 	
-				setPokemon(pokemons)
+				let pokemonData = await Promise.all(responseArr.map(res => res.json()))
+
+				setPokemon(pokemonData.map(pokemonObj => ({ 
+					name: pokemonObj.name, 
+					url: pokemonObj.sprites.other.home.front_default, 
+					clicked: false, 
+				})))
+				setLoading(false)
 
 			} catch (err) {
-				// any error could be handle using an error state variable
-				console.log(err);
+				setError(err.message)
 			}
-		})()
+		}
 
+		getPokemon()
 	}, [])
 
 	return (
 		<div className='wrapper'>
 			<Score score={score} highScore={highScore} />
-			<Cards pokemon={pokemon} setPokemon={setPokemon} increaseScore={increaseScore} resetScore={resetScore}/>
+			{ error && 
+				<ErrorMessage />
+			}
+			{ !error && 
+				<Cards 
+					pokemon={pokemon} 
+					setPokemon={setPokemon} 
+					increaseScore={increaseScore} 
+					resetScore={resetScore}
+					loading={loading}
+				/>
+			}
 		</div>
 	)
 }

@@ -7,6 +7,13 @@
     gap: 24px;
     justify-content: center;
 
+    &__loading-item {
+        grid-column: 2 / 4;
+        grid-row: 1 / 4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     &__card {
         font-weight: bold;
         background-color: #1E1E1E;
@@ -52,6 +59,7 @@
     // restrain grid to 4 columns
     @include breakpoint(768px) {
         grid-template-columns: repeat(4, 170px);
+        grid-auto-rows: 170px;
     }
     @include breakpoint(1148px) {
         margin: 0;
